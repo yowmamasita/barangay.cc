@@ -4,6 +4,7 @@ import { sortBy, compose, prop, toLower, uniq, filter } from "ramda"
 import { List, ListItem, Tag, Text, Stack, Heading } from "@chakra-ui/core"
 import SEO from "./seo"
 import { utf8 } from "../support"
+import Commento from "./commento"
 
 const BarangayOfficials = ({ barangay, city }) => {
   const [officials, setOfficials] = useState([])
@@ -72,6 +73,7 @@ const BarangayOfficials = ({ barangay, city }) => {
           </ListItem>
         ))}
       </List>
+      <Commento />
     </>
   )
 }
