@@ -35,9 +35,9 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer style={{ marginTop: 250 }}>
+        <footer style={{ marginTop: 50 }}>
           © {new Date().getFullYear()}, Built with{" "}
-          <span style={{ color: "red" }}>♥</span> by Ben & Cess Sarmiento
+          <span style={{ color: "red" }}>♥</span> by Ben & Cess.
         </footer>
       </div>
     </ThemeProvider>

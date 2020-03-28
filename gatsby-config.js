@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Barangay.cc`,
-    description: `We connect you with your baranggay officials`,
+    description: `We connect you with your barangay officials`,
     author: `@bensarmiento`,
   },
   plugins: [
