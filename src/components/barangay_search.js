@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { Input, List, ListItem } from "@chakra-ui/core"
 import { Link } from "gatsby"
 import { debounce } from "../support"
-import { groupBy, keys } from "ramda"
 import { searchApi } from "../api"
 
 const BarangaySearch = () => {
@@ -35,7 +34,7 @@ const BarangaySearch = () => {
           <ListItem key={i}>
             {barangay.BARANGAY}, {barangay.CITY_MUNICIPALITY} -{" "}
             <Link
-              to={`/barangay_officials?barangay=${barangay.BARANGAY}&city=${barangay.CITY_MUNICIPALITY}`}
+              to={`/officials/${barangay.CITY_MUNICIPALITY}/${barangay.BARANGAY}`}
             >
               View officials
             </Link>

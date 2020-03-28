@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { searchApi } from "../api"
 import { sortBy, compose, prop, toLower, uniq, filter } from "ramda"
-import { List, ListItem, Tag, Text, Stack } from "@chakra-ui/core"
+import { List, ListItem, Tag, Text, Stack, Heading } from "@chakra-ui/core"
+import SEO from "./seo"
+import { utf8 } from "../support"
 
-const OfficialsList = () => {
-  const urlParams = new URLSearchParams(window.location.search)
-  const barangay = urlParams.get("barangay")
-  const city = urlParams.get("city")
-
+const BarangayOfficials = ({ barangay, city }) => {
   const [officials, setOfficials] = useState([])
   const [details, setDetails] = useState({})
 
@@ -39,6 +37,10 @@ const OfficialsList = () => {
 
   return (
     <>
+      <SEO title={`Officials of ${barangay}, ${city}`} />
+      <Heading>
+        Officials of {barangay}, {city}
+      </Heading>
       <Stack>
         <Text>Region: {details.region}</Text>
         <Text>Province: {details.province}</Text>
@@ -48,7 +50,9 @@ const OfficialsList = () => {
             <>
               {details.tel_no.join(", ")}{" "}
               <sup>
-                <a href="https://pldthome.com/updateto8">Not working?</a>
+                <a target="_blank" href="https://pldthome.com/updateto8">
+                  Not working?
+                </a>
               </sup>
             </>
           ) : (
@@ -59,8 +63,9 @@ const OfficialsList = () => {
       <List>
         {officials.map((official, i) => (
           <ListItem key={i}>
-            {official.POSITION}: {official.FIRSTNAME} {official.MIDDLENAME}{" "}
-            {official.LASTNAME} {official.SUFFIX}{" "}
+            {official.POSITION}: {utf8(official.FIRSTNAME)}{" "}
+            {utf8(official.MIDDLENAME)} {utf8(official.LASTNAME)}{" "}
+            {utf8(official.SUFFIX)}{" "}
             {official.EMAIL_ADDRESS && (
               <Tag>{toLower(official.EMAIL_ADDRESS)}</Tag>
             )}
@@ -71,4 +76,4 @@ const OfficialsList = () => {
   )
 }
 
-export default OfficialsList
+export default BarangayOfficials
